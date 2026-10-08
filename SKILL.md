@@ -1,9 +1,9 @@
 ---
-name: poster-mimic
+name: poster-design-mimic
 description: 从参考学术海报提取可复用的视觉规则、内容模块关系与阅读路径，写成 POSTER-DESIGN.md，再把用户提供的研究材料编排成同风格海报。适用于参考图片或 PDF 的风格提取、论文海报重排及复用已有规格。
 ---
 
-# poster-mimic · 学术海报风格提取与重建
+# poster design mimic · 学术海报风格提取与重建
 
 本 skill 借鉴 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) 的文本设计规格思路。海报需要两层规格：**视觉语言**说明版式、字阶、颜色和图表怎样呈现；**内容架构**说明参考海报的模块承担什么论证任务、彼此如何连接、读者按什么路径理解。只有视觉 token，没有内容关系图，模型仍会把图和结论摆错位置。
 

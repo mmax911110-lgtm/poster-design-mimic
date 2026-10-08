@@ -1,4 +1,4 @@
-# poster-mimic
+# poster design mimic
 
 把参考学术海报拆成可复用的 `POSTER-DESIGN.md`，再将新的研究材料按同一视觉语言与内容逻辑编排成海报。
 
@@ -17,11 +17,11 @@
 
 ## 安装与使用
 
-将整个 `poster-mimic/` 目录放到支持 `SKILL.md` 的技能目录中。例如 WorkBuddy 可放在 `~/.workbuddy/skills/poster-mimic/`。启动新会话后，提供参考海报和待编排的研究材料，说明目标尺寸、输出格式及署名要求。
+将整个 `poster-design-mimic/` 目录放到支持 `SKILL.md` 的技能目录中。例如 WorkBuddy 可放在 `~/.workbuddy/skills/poster-design-mimic/`。启动新会话后，提供参考海报和待编排的研究材料，说明目标尺寸、输出格式及署名要求。
 
 示例请求：
 
-> 请用 poster-mimic 提取这张参考海报的设计和内容关系，输出 POSTER-DESIGN.md；再把我的论文摘要、图 1–3 和结论做成 A0 海报。不要沿用参考图中的研究数据。
+> 请用 poster-design-mimic 提取这张参考海报的设计和内容关系，输出 POSTER-DESIGN.md；再把我的论文摘要、图 1–3 和结论做成 A0 海报。不要沿用参考图中的研究数据。
 
 只有参考海报时，可以先只要求提取 `POSTER-DESIGN.md`；已有规格时可直接用于另一篇论文。没有参考图时，`references/archetypes.md` 提供原创起点。
 
@@ -42,3 +42,7 @@
 - `poster.pdf`：用户需要印刷或提交版时交付。
 
 实际文件名和格式可随用户要求调整。参考图的文字、数据、图表和标识不会作为新研究的事实来源。
+
+## 许可证
+
+本项目采用 [MIT License](LICENSE)。允许使用、修改和分发，包括商业用途；再分发时须保留版权和许可证声明。
