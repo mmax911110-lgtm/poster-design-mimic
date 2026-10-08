@@ -1,60 +1,62 @@
 ---
 name: poster-design-mimic
-description: Extract reusable visual rules, content-module relationships, and reading paths from a reference academic poster into POSTER-DESIGN.md, then apply them to new research material. Use for poster style extraction, paper-to-poster layout, or reuse of an existing poster specification.
+description: Extract academic poster visual style, content relationships, and reading paths into POSTER-DESIGN.md and apply them to new research material；从参考学术海报提取视觉规则与内容逻辑，制作或复用学术海报规格。
 ---
 
-# Poster Design Mimic
+[English](SKILL.en.md)
 
-This skill draws on the text-based design specification idea in [awesome-design-md](https://github.com/VoltAgent/awesome-design-md). An academic poster needs two layers: a **visual language** for layout, typography, colors, and figures, and a **content architecture** for what each module contributes to the argument, how modules relate, and how readers move through them. Visual tokens alone do not tell an agent where evidence and conclusions belong.
+# poster design mimic · 学术海报风格提取与重建
 
-## Inputs and outputs
+本 skill 借鉴 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) 的文本设计规格思路。海报需要两层规格：**视觉语言**说明版式、字阶、颜色和图表怎样呈现；**内容架构**说明参考海报的模块承担什么论证任务、彼此如何连接、读者按什么路径理解。只有视觉 token，没有内容关系图，模型仍会把图和结论摆错位置。
 
-- **Reference poster:** At least one complete image. A source PDF or high-resolution details improve text and measurement accuracy.
-- **Target material:** A paper, abstract, figures, data, or content outline. If only the reference is available, complete the extraction without inventing content for a new poster.
-- **Existing `POSTER-DESIGN.md`:** Reuse it, but check that it includes content architecture. If it does not, extract that layer from the reference or build a clearly labeled structure from the target material.
-- **No reference poster:** If the user still wants this skill, [archetypes.md](references/archetypes.md) provides original starting points. Label these as design choices, never as observations from a reference.
+## 适用输入与产物
 
-Deliver what the task calls for: `POSTER-DESIGN.md` for extraction; an editable source file and a print-ready PDF for production when the user requests those formats.
+- 有参考海报：至少一张完整画面；若有 PDF 或局部高清图，可提高文字和尺寸取证质量。
+- 有待编排材料：论文、摘要、图表、数据或已有内容大纲。只有参考图时，先完成提取，不虚构新海报内容。
+- 已有 `POSTER-DESIGN.md`：直接复用规格，检查它是否包含内容架构；缺失时补提取或明确按新材料建立架构。
+- 没有参考图但用户希望使用本 skill：可选用 [archetypes.md](references/archetypes.md) 作为原创起点，明确标为原型设计，不称为“提取自参考图”。
 
-## Workflow
+按任务交付适用文件：提取任务为 `POSTER-DESIGN.md`；制作任务另交付可编辑源文件和可打印 PDF（如果用户需要 PDF）。
 
-### 1. Extract the reference poster
+## 工作流程
 
-Read [poster-design-schema.md](references/poster-design-schema.md) and record three layers:
+### 1. 提取参考海报
 
-1. **Visual specification:** Canvas, grid, color roles, type scale, spacing, charts, and decoration, with values and evidence.
-2. **Reference content architecture:** Assign IDs to visible modules. Record each module's role, key message, position, and visual weight. Represent relationships such as motivates, addresses, produces, supports, qualifies, contrasts, parallels, and summarizes as typed edges. Record the reading path separately.
-3. **Transfer rules:** Distinguish reusable layout grammar from facts specific to the reference study. Mark unreadable text or uncertain relationships as unknown. Visual proximity alone is not evidence of causation.
+读 [poster-design-schema.md](references/poster-design-schema.md)，同时记录三件事：
 
-Write these layers in `POSTER-DESIGN.md`. Every consequential visual value or content relationship should have a traceable basis. Label values read directly from a source file or supplied by the user as `[Measured]`, pixel-based estimates as `[Estimated]`, semantic interpretations as `[Inferred]`, and unresolved items as `[Unknown]`. User acceptance of an estimate does not turn it into a measurement.
+1. **视觉规格**：画布、栅格、色彩角色、字阶、间距、图表与装饰；记录数值、来源和可靠程度。
+2. **参考内容架构**：给可见模块编号，记录语义角色、核心信息、位置与视觉权重；用有向关系描述“引出、回答、产生、支持、限定、对比、并列、汇总”等关系，并写出阅读路径。
+3. **风格迁移规则**：指出哪些关系属于该海报的可复用编排语法，哪些只是原论文的具体事实。无法读清的文字或关系标为未知，不能把视觉邻接臆断成因果。
 
-### 2. Map the new research material
+把以上内容写入 `POSTER-DESIGN.md`。视觉 token 和内容关系都要有可追溯的观察依据；位图估计值应标“估计”，矢量属性或用户给定值可标“实测”。估计不会因为用户确认而变成实测。
 
-Build a **target content graph** from the user's material before placing anything. Track the source of each claim, value, figure, and qualification. Specify which data or figure supports each claim. Then map target nodes to the reference poster's reusable roles and relationships. Do not copy research facts from the reference or force the same number of modules.
+### 2. 映射新材料
 
-- Preserve the direction of a problem → method → evidence → conclusion argument. If evidence is missing, do not invent a chart or conclusion.
-- Keep qualifications next to the claim or figure they limit. Make comparisons easy to inspect; share an axis only when measures, units, and definitions are compatible.
-- Preserve the order of method steps and the equal status of parallel contributions. Cross-column elements must not break a necessary reading path.
-- When material is too dense, cut or combine it according to argumentative importance and record the choice. Do not hide density by shrinking text beyond useful readability.
+先按用户材料建立**目标内容图**：每条主张、数据、图和限定条件有来源；明确主张由哪张图或哪组数值支持。再按参考海报的内容语法，把目标内容映射到模块，而不是复制参考海报的研究事实或强行维持相同模块数。
 
-If the target material does not fit the reference structure, preserve its visual grammar where possible—for example, a wide evidence area beside a narrow conclusion area—while adjusting the number or position of modules. Record material deviations. If key data is absent, provide a reviewable structure or an explicit empty slot rather than a fabricated result.
+- “问题 → 方法 → 证据 → 结论”应保持论证方向；目标材料若缺证据，不补造图表或结论。
+- 限定条件贴近其限定的主张或图表；比较项保持容易对照，只有量纲与定义兼容时才共用坐标轴。
+- 方法步骤保留先后，平行贡献保持同级；跨栏元素不得打断必要的阅读路径。
+- 内容过多时按论证重要性删减或合并，并记录取舍；不要靠缩字遮掩拥挤。
 
-### 3. Build and verify
+若目标内容与参考结构不匹配，保留其视觉语法（例如“宽证据区 + 窄结论区”），调整模块数量或位置，并在规格中说明偏离。缺少关键数据时只生成可审阅的内容结构或明确空位，不伪造结果。
 
-For HTML/CSS production, read [build-guide.md](references/build-guide.md). Set the physical page size and reuse visual tokens. User-provided photographs or microscopy images may remain sufficiently high-resolution raster images. Statistical charts should preferably be vector graphics or redrawn from actual data. Keep text, equations, and captions legible; do not use generated images to fabricate them.
+### 3. 实现与核查
 
-Before export, check both **visual consistency** and **content logic**. Can a reader enter at the title, follow the intended path, find each main claim's evidence, and see its qualifications? Do figure placement, cross-column spans, and side-by-side comparisons reflect the actual relationships? Also check dimensions, overflow, font substitutions, data provenance, and the user's authorship or anonymity requirements. Ask the user to resolve only uncertainties that materially affect scientific meaning or delivery requirements.
+制作 HTML/CSS 时读 [build-guide.md](references/build-guide.md)。以物理尺寸设置页面，使用设计 token 复用视觉规则。用户提供的照片、显微图等可以用足够分辨率的位图；统计图应尽量用矢量或从真实数据重绘。文字、公式、图注保持可读，不用图像生成伪造这些内容。
 
-## Boundaries
+导出前同时检查**视觉一致性**和**内容逻辑**：读者从标题进入后能否沿指定路径找到主张及其证据；图表是否紧贴解释；限定是否就近；跨栏和并排布局是否符合实际关系。检查尺寸、溢出、字体替代、数据来源及用户要求的署名/匿名规则。只在影响研究含义或交付要求的不确定项上向用户核实。
 
-- Reuse the reference's visual structure, not its text, data, logos, or figures as facts about the target study.
-- State uncertainty when the reference cannot be measured or read reliably. Do not invent exact dimensions, colors, or logical relationships.
-- Do not turn one reference poster's accent count, column count, word count, or viewing distance into a universal rule. Follow the reference, target size, and actual content.
-- Preserve the scientific conclusions, units, uncertainty, and scope in the user's material. Any rewrite should be traceable to the source.
+## 使用边界
 
-## References
+- 参考图的视觉结构可以借鉴，原图的文本、数据、标识和图表不得当作目标研究事实。
+- 对参考海报的取证不充分时写清不确定性，不编造精确尺寸、颜色或内容关系。
+- 不把单一海报的颜色数量、栏数、正文字数或阅读距离当成所有海报的硬规则；遵循参考样本、目标尺寸与实际内容。
+- 保持用户提供的科学结论、单位、误差和适用范围；任何改写都应可回溯到原始材料。
 
-- [poster-design-schema.md](references/poster-design-schema.md): extraction template, content graph, and evidence labels.
-- [content-architecture-example.md](references/content-architecture-example.md): fictional example to consult when defining edges or mapping target content.
-- [build-guide.md](references/build-guide.md): implementation, export, and logic checks.
-- [archetypes.md](references/archetypes.md): original starting points when there is no reference poster.
+## 参考资料
+
+- [poster-design-schema.md](references/poster-design-schema.md)：提取模板、内容关系图与证据标记。
+- [content-architecture-example.md](references/content-architecture-example.md)：需要核对关系边和目标映射写法时阅读的虚构示例。
+- [build-guide.md](references/build-guide.md)：实现、导出和逻辑自检。
+- [archetypes.md](references/archetypes.md)：无参考图时的起步原型。

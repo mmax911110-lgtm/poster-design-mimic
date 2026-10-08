@@ -1,23 +1,25 @@
-# Poster archetypes without a reference
+# 无参考图时的海报原型
 
-These are **original layout starting points**, not measured patterns from a particular poster. After choosing one, build the target content graph from the actual research and write `POSTER-DESIGN.md` with `source: archetype/<name>`. Adjust the suggestions below when the study's argument requires it.
+[English](archetypes.en.md)
 
-| Archetype | Visual structure | Suitable content architecture | Common failure |
+这些是**原创编排起点**，不代表已从某张海报实测提取。选定后按实际内容建立目标内容图，再写 `POSTER-DESIGN.md`；`source` 标为 `archetype/<name>`。下列布局建议可调整，不能压过论文真实的论证结构。
+
+| 原型 | 视觉骨架 | 适合的内容架构 | 易错点 |
 |---|---|---|---|
-| **Band Header** | Full-width title band above a regular grid | A clear problem → method → results → conclusion chain | The title band consumes space needed for figures |
-| **Minimal Grid** | Large title, few divider lines, generous gutters | A small set of core claims and evidence with a short reading path | Dense content weakens the hierarchy |
-| **Data Forward** | One major figure or a group of comparison figures dominates | Comparisons, trends, and evidence carry the central message | Figures are large but their claims, units, or conditions are unclear |
-| **Dark Canvas** | Dark background with high-contrast titles and figure blocks | Screen display or a setting designed for dark visuals | Shadows, thin lines, and small text disappear in print |
+| **Band Header** 通栏标题 | 顶部色带 + 下方规则栅格 | 问题 → 方法 → 结果 → 结论的清晰主链 | 大色带挤占图表空间 |
+| **Minimal Grid** 极简留白 | 大标题、少量分隔线、宽松栏距 | 少量核心论点及证据，阅读路径短 | 内容一多，层级会散 |
+| **Data Forward** 数据主导 | 一张主图或成组对比图占主视觉 | 结果之间的对比、趋势与证据是核心 | 图很大却没有清晰主张、单位或条件 |
+| **Dark Canvas** 深色展板 | 深底高对比标题与图块 | 屏幕展陈或特殊展示环境 | 暗部、细线和小字打印后难辨 |
 
-## Choose and adapt
+## 选择和定稿
 
-Start with the target research graph: is it one argument chain, several parallel contributions, a method sequence, or a controlled comparison? Then consider the display environment and the balance of figures and text. Many figures do not automatically call for Data Forward; if they are supporting material, the method or conclusion may still deserve the main visual position. Check a dark layout on the intended output device.
+先看目标研究的关系图：是单链、几条并行贡献、方法流程，还是对照实验。再按观看环境与图文比重选择原型。图多不自动等于 Data Forward；若图只是辅助说明，主视觉仍可放在方法或结论。深色方案应通过目标输出设备的可读性检查。
 
-Before production, add at least:
+把原型落地时至少补齐：
 
-1. **Target content graph:** Claims, evidence, qualifications, and sources.
-2. **Reading path:** Entry, main route, branches, exit, and the reason for cross-column or side-by-side placement.
-3. **Visual tokens:** Paper size, type hierarchy, color roles, gutters, and chart styling.
-4. **Deviation log:** Which archetype features changed to fit the target content, and why.
+1. **目标内容图**：主张、证据、限定与来源。
+2. **阅读路径**：入口、主线、支线、出口，以及跨栏和并排的依据。
+3. **视觉 token**：目标纸张、字阶、色彩角色、栏距和图表规范。
+4. **偏离记录**：为了目标内容调整了哪些原型特征，为什么。
 
-Without a reference, do not mark design choices as `[Measured]` or invent “reference poster modules.” Label the archetype and its adaptations as design decisions. Research claims still require evidence from the user's material.
+没有参考图时，不要写 `[实测]` 或假装有“参考海报模块”。原型选择和设计决策可标为“设计设定”；研究事实仍须从用户材料取证。
