@@ -4,6 +4,8 @@
 
 把参考学术海报拆成可复用的 `POSTER-DESIGN.md`，再将新的研究材料按同一视觉语言与内容逻辑编排成海报。
 
+![参考海报 PDF 经风格与内容关系提取，生成 POSTER-DESIGN.md 报告的示意图](assets/pdf-to-report.svg)
+
 这个 skill 受到 [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) 的文本设计规格思路启发；本项目针对学术海报增加了**参考海报内容模块关系**、**阅读路径**、**目标论文的主张—证据映射**。它是独立编写的工作流，不是 VoltAgent 项目的官方扩展。
 
 ## 为什么需要内容架构
@@ -16,6 +18,12 @@
 - 哪些是可复用的编排语法，哪些是参考论文的具体事实。
 
 有了这些记录，新海报才能复用风格，同时保持目标研究的科学逻辑。
+
+## 怎样保留特色图形与版式
+
+先检查参考图是否有分区环、飘带、波浪分隔、异形容器或特殊图标；存在时记录几何、连接与遮挡、文字安全区和语义用途，未出现则不添加。分区环与飘带可用随附的 Python 脚本生成可编辑 SVG 起点，按参考参数调整；统计图仍由真实数据决定。
+
+复刻还检查标题字形与断行、内容密度、留白、组件变体及素材依赖。难点先做局部试样，再对照整页和最终 PDF。模糊参考、缺失字体或原插画会限制可达到的保真度，规格应说明具体差异。
 
 ## 安装与使用
 
@@ -35,6 +43,9 @@
 | [poster-design-schema.md](references/poster-design-schema.md) | 提取模板、关系图及证据等级 |
 | [content-architecture-example.md](references/content-architecture-example.md) | 虚构案例：参考关系图与目标内容映射 |
 | [build-guide.md](references/build-guide.md) | HTML/CSS 制作和导出核查 |
+| [shape-reconstruction.md](references/shape-reconstruction.md) | 异形组件识别、几何拆解及实现选择 |
+| [fidelity-review.md](references/fidelity-review.md) | 特色特征、试样、素材与复刻对照 |
+| [make_motif.py](scripts/make_motif.py) | 按显式参数生成等分示意环/折叠飘带 SVG，仅需 Python 标准库 |
 | [archetypes.md](references/archetypes.md) | 无参考图时的编排原型 |
 
 ## 产物

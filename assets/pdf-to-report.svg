@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title description">
+  <title id="title">Reference poster PDF to design report</title>
+  <desc id="description">A PDF thumbnail of an academic poster on the left connects through a curved arrow to a structured POSTER-DESIGN.md report on the right.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FBFF"/>
+      <stop offset="1" stop-color="#EEF4FA"/>
+    </linearGradient>
+    <linearGradient id="arrow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E58A70"/>
+      <stop offset="1" stop-color="#2D9FA7"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="13" stdDeviation="15" flood-color="#17385A" flood-opacity="0.13"/>
+    </filter>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#D8E4EE"/>
+    </pattern>
+  </defs>
+
+  <rect x="12" y="12" width="1176" height="536" rx="32" fill="url(#canvas)"/>
+  <rect x="12" y="12" width="1176" height="536" rx="32" fill="url(#dots)" opacity="0.5"/>
+
+  <!-- Academic poster PDF thumbnail -->
+  <g filter="url(#shadow)">
+    <rect x="132" y="68" width="315" height="418" rx="16" fill="#FFFFFF"/>
+  </g>
+  <rect x="150" y="84" width="279" height="384" rx="7" fill="#FFFFFF" stroke="#DEE8F0" stroke-width="2"/>
+  <rect x="150" y="84" width="279" height="87" rx="7" fill="#173B5F"/>
+  <path d="M150 158 H429 V171 H150 Z" fill="#173B5F"/>
+  <rect x="168" y="102" width="49" height="25" rx="5" fill="#E86F62"/>
+  <text x="192.5" y="119" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">PDF</text>
+  <rect x="168" y="137" width="218" height="8" rx="4" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="168" y="152" width="168" height="5" rx="2.5" fill="#A7C9DD"/>
+
+  <g fill="#264D6B">
+    <rect x="169" y="190" width="71" height="6" rx="3"/>
+    <rect x="257" y="190" width="71" height="6" rx="3"/>
+    <rect x="345" y="190" width="62" height="6" rx="3"/>
+  </g>
+  <g fill="#D7E3EB">
+    <rect x="169" y="205" width="68" height="4" rx="2"/>
+    <rect x="169" y="214" width="63" height="4" rx="2"/>
+    <rect x="169" y="223" width="66" height="4" rx="2"/>
+    <rect x="257" y="205" width="69" height="4" rx="2"/>
+    <rect x="257" y="214" width="62" height="4" rx="2"/>
+    <rect x="345" y="205" width="62" height="4" rx="2"/>
+    <rect x="345" y="214" width="55" height="4" rx="2"/>
+    <rect x="345" y="223" width="60" height="4" rx="2"/>
+  </g>
+
+  <rect x="168" y="246" width="73" height="92" rx="5" fill="#EAF5F5"/>
+  <circle cx="204.5" cy="277" r="15" fill="none" stroke="#51ABB2" stroke-width="6"/>
+  <path d="M194 300 H215" stroke="#51ABB2" stroke-width="4" stroke-linecap="round"/>
+  <rect x="256" y="246" width="73" height="92" rx="5" fill="#EFF3FA"/>
+  <path d="M268 318 V288 M283 318 V274 M298 318 V296 M313 318 V262" stroke="#4A79A6" stroke-width="9" stroke-linecap="round"/>
+  <rect x="344" y="246" width="64" height="92" rx="5" fill="#FFF3EE"/>
+  <path d="M352 314 L365 299 L376 304 L388 277 L400 266" fill="none" stroke="#E58A70" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#D7E3EB">
+    <rect x="169" y="354" width="66" height="4" rx="2"/>
+    <rect x="169" y="363" width="57" height="4" rx="2"/>
+    <rect x="257" y="354" width="65" height="4" rx="2"/>
+    <rect x="257" y="363" width="58" height="4" rx="2"/>
+    <rect x="345" y="354" width="60" height="4" rx="2"/>
+    <rect x="345" y="363" width="53" height="4" rx="2"/>
+  </g>
+  <rect x="168" y="389" width="240" height="57" rx="6" fill="#EAF1F7"/>
+  <rect x="180" y="401" width="112" height="6" rx="3" fill="#264D6B"/>
+  <rect x="180" y="416" width="211" height="4" rx="2" fill="#B6CBD9"/>
+  <rect x="180" y="427" width="180" height="4" rx="2" fill="#B6CBD9"/>
+
+  <!-- One continuous curved transformation arrow -->
+  <circle cx="494" cy="339" r="7" fill="#E58A70"/>
+  <path d="M494 339 C565 392 639 174 727 236" fill="none" stroke="url(#arrow)" stroke-width="13" stroke-linecap="round"/>
+  <path d="M716 247 L751 250 L735 218 Z" fill="#2D9FA7"/>
+
+  <!-- Structured report -->
+  <g filter="url(#shadow)">
+    <rect x="758" y="68" width="315" height="418" rx="16" fill="#FFFFFF"/>
+  </g>
+  <rect x="777" y="84" width="277" height="384" rx="7" fill="#FFFFFF" stroke="#DEE8F0" stroke-width="2"/>
+  <rect x="795" y="101" width="70" height="23" rx="5" fill="#DDF3F1"/>
+  <text x="830" y="117" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#187D80">REPORT</text>
+  <text x="795" y="153" font-family="Consolas, 'Courier New', monospace" font-size="19" font-weight="700" fill="#173B5F">POSTER-DESIGN.md</text>
+  <path d="M795 167 H1036" stroke="#E4EBF1" stroke-width="2"/>
+
+  <circle cx="804" cy="195" r="7" fill="#4C7BA4"/>
+  <rect x="822" y="191" width="99" height="8" rx="4" fill="#264D6B"/>
+  <rect x="795" y="215" width="132" height="5" rx="2.5" fill="#D5E2EB"/>
+  <rect x="795" y="226" width="104" height="5" rx="2.5" fill="#D5E2EB"/>
+  <circle cx="991" cy="218" r="11" fill="#173B5F"/>
+  <circle cx="1016" cy="218" r="11" fill="#50A9B0"/>
+  <circle cx="1041" cy="218" r="11" fill="#E58A70"/>
+
+  <path d="M795 252 H1036" stroke="#E4EBF1" stroke-width="2"/>
+  <circle cx="804" cy="274" r="7" fill="#4C7BA4"/>
+  <rect x="822" y="270" width="107" height="8" rx="4" fill="#264D6B"/>
+  <path d="M834 310 H907 M922 310 H991" stroke="#9BBACD" stroke-width="4" stroke-linecap="round"/>
+  <path d="M906 307 L912 310 L906 313 M991 307 L997 310 L991 313" fill="none" stroke="#9BBACD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="800" y="297" width="34" height="26" rx="6" fill="#EAF1F7" stroke="#7EA6C1"/>
+  <rect x="912" y="297" width="34" height="26" rx="6" fill="#EAF5F5" stroke="#51ABB2"/>
+  <rect x="997" y="297" width="34" height="26" rx="6" fill="#FFF3EE" stroke="#E58A70"/>
+
+  <path d="M795 345 H1036" stroke="#E4EBF1" stroke-width="2"/>
+  <circle cx="804" cy="368" r="7" fill="#4C7BA4"/>
+  <rect x="822" y="364" width="91" height="8" rx="4" fill="#264D6B"/>
+  <rect x="795" y="390" width="218" height="5" rx="2.5" fill="#D5E2EB"/>
+  <rect x="795" y="402" width="190" height="5" rx="2.5" fill="#D5E2EB"/>
+  <rect x="795" y="414" width="230" height="5" rx="2.5" fill="#D5E2EB"/>
+  <rect x="795" y="440" width="124" height="7" rx="3.5" fill="#DDF3F1"/>
+</svg>

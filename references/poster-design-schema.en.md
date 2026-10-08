@@ -8,7 +8,7 @@ Use this reference to turn a poster image or PDF into a reusable `POSTER-DESIGN.
 
 ```text
 1. Source and scope of observation
-2. Visual tokens and relationships between them
+2. Visual tokens and relationships; distinctive components, geometry, and asset dependencies where present
 3. Reference poster content architecture: module inventory, typed edges, reading path
 4. Reusable layout rules versus study-specific facts
 5. Target content graph and module mapping (only when new material is provided)
@@ -20,6 +20,8 @@ Use this reference to turn a poster image or PDF into a reusable `POSTER-DESIGN.
 ## 2. Source and evidence levels
 
 At the start of the file, identify the reference file or URL, page count, resolution or vector properties, target size if known, and extraction date. Mark each consequential observation with one of these labels:
+
+Also record the reconstruction/transfer goal, expected editing scope, and any cropping, perspective, or blur affecting observation. Attribute key rules in a multi-source specification to their individual references; do not treat scan distortion as design.
 
 | Label | Meaning | Example |
 |---|---|---|
@@ -79,12 +81,28 @@ Example:
 ```markdown
 ## Visual relationships
 - Title/body size is approximately 3.7:1 [Estimated; basis: sampled pixel letter heights].
-- Dark blue appears only in the title band and section headings [Measured; basis: inspected page 1].
+- Dark blue appears only in the title band and section headings [Inferred; basis: visible color roles on page 1].
 - The conclusion spans two columns; captions sit below figures [Estimated; basis: M5/M6 bounds].
-- No card shadows appear on the inspected reference page [Measured; scope: that page].
+- No card shadows are apparent [Inferred; scope: sufficiently clear regions of the inspected page].
 ```
 
 When resizing, prioritize relative hierarchy, semantic color roles, whitespace rhythm, and the spatial relationship between evidence and conclusion. Absolute font sizes, spacing, and column counts may change with sheet size and content; record material deviations. Assess legibility against the final sheet, likely viewing distance, and a print proof rather than a universal minimum-size table.
+
+### 3.1 Distinctive components and presence
+
+For candidate segmented rings, ribbons, custom dividers/containers, and icons, record:
+
+| ID/type | Present / absent / uncertain | Inspected region and evidence | Module and function | Defining features | Implementation/asset needs |
+|---|---|---|---|---|---|
+| S1 / from reference | From observation | Source page/crop and evidence level | M… / decoration, container, relationship diagram, or data chart | From observation | Paths, parameters, or source assets |
+
+Exclude absent components from production; uncertainty does not authorize invention. For present components, use [shape-reconstruction.md](shape-reconstruction.en.md) to document geometry, topology, occlusion, anchors, text safe areas, and content mapping. Record base components and local variants separately. Cross-check holes, connections, segment counts, and arrow directions against the content graph.
+
+### 3.2 Text capacity, feature constraints, and dependencies
+
+In consequential regions, record title breaks, glyph width/weight, leading, approximate body line counts, text/figure areas, and whitespace. Identify variable parameters and substitutions that would erase distinctive features. These must come from the current reference, not become defaults for all posters.
+
+For required files, record `asset ID → function/component → source and reuse conditions → file/obtainable location → format and editing scope → missing-asset response`. With Markdown alone, supply reproducible parameters/paths for geometry. Explicitly identify anything requiring an original illustration or proprietary font. See [fidelity-review.md](fidelity-review.en.md) for comparison methods.
 
 ## 4. Reference poster content architecture
 
@@ -212,3 +230,5 @@ Before finishing, ask:
 - Can every target claim be traced to the user's material and, where needed, to supporting data or a figure?
 - Are qualifications, comparisons, and step order expressed correctly in the layout?
 - Are illegible items still marked unknown, and are material deviations recorded?
+- Were distinctive components checked for presence and given implementable geometry, layering, and safe-area specifications?
+- Are typography, wrapping, density, and asset dependencies recorded, with defining features and actual-export checks available for comparison?

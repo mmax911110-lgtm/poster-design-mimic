@@ -6,7 +6,7 @@ Before production, read the project's `POSTER-DESIGN.md`, especially its referen
 
 ## 1. Arrange the argument before styling it
 
-1. Build each module from the target content graph: title, claim, evidence, caption, qualification, and source. Do not copy claims or values from the reference poster.
+1. Build each module from the target content graph: title, claim, evidence, caption, qualification, and source. Do not copy reference claims or values into a new study. For requested same-content reconstruction, the original content is the target material.
 2. Use the relationship edges to decide placement: the order of steps, common labels for comparisons, proximity between figures and claims, and proximity between qualifications and conclusions. Sketch a wireframe and trace the reading path from entry to exit.
 3. Apply the visual tokens to reproduce hierarchy, proportions, and component rules. When the target size changes, adjust absolute values and record meaningful deviations.
 4. Render, inspect, and export. If content overflows, first tighten redundant prose or reorganize modules and whitespace. Do not discard evidence or qualifications or make text unreadable.
@@ -63,9 +63,10 @@ body {
 }
 .poster {
   width: 841mm;
-  min-height: 1189mm;
+  height: 1189mm;
   padding: var(--margin);
   display: grid;
+  align-content: start;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--section-gap) var(--gutter);
 }
@@ -78,9 +79,13 @@ body {
 
 Colors, sizes, column counts, and spans in the final file must come from `POSTER-DESIGN.md`. Use CSS variables for repeated values. A component-specific value with a documented reason can stay in the component; not every number needs a token. CSS pixels are allowed internally, but verify paper size, page margins, and print typography in physical units.
 
+A fixed canvas height exposes capacity problems. Resolve overflow through layout rather than hiding it with `overflow: hidden` or allowing unlimited page growth followed by print scaling. This is only a grid starting point; set actual row sizes and module positions from the specification.
+
 If the reference uses a full-width color band or bleed, implement it according to the printer's actual requirements. Negative margins do not create a valid print bleed by themselves. For a bleed-ready PDF, confirm both trim size and bleed size.
 
 ## 3. Charts, photographs, and fonts
+
+First use [fidelity-review.md](fidelity-review.en.md) to identify fidelity priorities and check distinctive components and text capacity. When custom shapes are present, read [shape-reconstruction.md](shape-reconstruction.en.md). Build ring sectors as separate arc paths and ribbon faces in layer order; keep text and labels independent. Do not introduce shapes absent from the reference merely because a template provides them.
 
 - **Statistical charts and diagrams:** Prefer user-provided vector files or redraw from actual data. Keep scales, units, color meanings, and legend conventions consistent. Overlay plots or share axes only when measures and statistical definitions are compatible.
 - **Experimental photographs, micrographs, and scans:** These are inherently pixel-based and may remain raster images at sufficient resolution. Cropping must retain scale bars, labels, and essential experimental conditions.
@@ -98,8 +103,11 @@ Check before delivery:
 - [ ] Every target module has a source; each central claim has evidence or is explicitly marked as needing it.
 - [ ] Method and result, figure and caption, and qualification and qualified claim remain paired.
 - [ ] Comparisons use compatible measures, units, samples, and axes; parallel items do not acquire unsupported visual ranking.
-- [ ] No research facts, names, logos, or figures were carried over from the reference poster.
+- [ ] No reference research facts, names, logos, or figures were mixed into a new study; requested same-content reconstruction retains its original content accurately.
 - [ ] No placeholder text, broken images, overflow, awkward wrapping, or unintended extra page remains.
+- [ ] Distinctive silhouettes, partitions/holes, occlusion, and text safe areas match the specification; no unobserved decoration was introduced.
+- [ ] Page thumbnails and key crops were compared for title wrapping, text/figure density, focus, and component variants; necessary deviations are recorded.
+- [ ] Actual PDF renders were checked for arrows, clipping/masks, transparency, and fonts; source files and required assets resolve within the delivery.
 - [ ] The PDF's physical size, page count, backgrounds, and fonts are correct; figures remain clear when enlarged.
 - [ ] Authors, affiliations, acknowledgments, and anonymity follow the user's material and venue rules.
 

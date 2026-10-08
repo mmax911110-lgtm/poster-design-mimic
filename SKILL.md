@@ -18,6 +18,10 @@ description: Extract academic poster visual style, content relationships, and re
 
 按任务交付适用文件：提取任务为 `POSTER-DESIGN.md`；制作任务另交付可编辑源文件和可打印 PDF（如果用户需要 PDF）。
 
+先从请求判断是**同内容重建**还是**新材料风格迁移**，记录目标尺寸、可编辑范围及关键保真要求。复用旧规格时还要检查特色组件、素材依赖和对照依据是否齐全；缺失部分补提取或标未知。
+
+用户明确要求同内容重建时，以其要求重建的原内容为目标材料，保留准确文本、数据和对应身份信息；无法辨认处标未知并索取必要原文。下面的“不得沿用参考事实”针对迁移到另一项研究，不阻止按用户要求重建原海报。
+
 ## 工作流程
 
 ### 1. 提取参考海报
@@ -29,6 +33,8 @@ description: Extract academic poster visual style, content relationships, and re
 3. **风格迁移规则**：指出哪些关系属于该海报的可复用编排语法，哪些只是原论文的具体事实。无法读清的文字或关系标为未知，不能把视觉邻接臆断成因果。
 
 把以上内容写入 `POSTER-DESIGN.md`。视觉 token 和内容关系都要有可追溯的观察依据；位图估计值应标“估计”，矢量属性或用户给定值可标“实测”。估计不会因为用户确认而变成实测。
+
+**异形组件检查**：检查分区环、飘带/折角、波浪/斜切分隔、异形容器和特殊图标，按已检查区域记录“存在 / 未出现 / 无法判断”。存在时读 [shape-reconstruction.md](references/shape-reconstruction.md)，写出几何、孔洞/连接/遮挡、文字安全区、语义用途和实现方式；未出现则不添加，未知则不补造。四区环须区分并列类别、循环步骤与数据占比，不能只按外形决定内容关系。
 
 ### 2. 映射新材料
 
@@ -45,6 +51,8 @@ description: Extract academic poster visual style, content relationships, and re
 
 制作 HTML/CSS 时读 [build-guide.md](references/build-guide.md)。以物理尺寸设置页面，使用设计 token 复用视觉规则。用户提供的照片、显微图等可以用足够分辨率的位图；统计图应尽量用矢量或从真实数据重绘。文字、公式、图注保持可读，不用图像生成伪造这些内容。
 
+制作前读 [fidelity-review.md](references/fidelity-review.md)：列出决定相似度的特征和有依据的禁止替换项；难重建组件先做局部试样。按几何需求选择 SVG/CSS、目标编辑器原生形状或独立素材，避免因实现方便丢掉特色轮廓。按整页构图 → 组件局部 → 实际导出文件对照修正，同时检查字形/断行、内容密度、层级遮挡和素材可用性。
+
 导出前同时检查**视觉一致性**和**内容逻辑**：读者从标题进入后能否沿指定路径找到主张及其证据；图表是否紧贴解释；限定是否就近；跨栏和并排布局是否符合实际关系。检查尺寸、溢出、字体替代、数据来源及用户要求的署名/匿名规则。只在影响研究含义或交付要求的不确定项上向用户核实。
 
 ## 使用边界
@@ -59,4 +67,6 @@ description: Extract academic poster visual style, content relationships, and re
 - [poster-design-schema.md](references/poster-design-schema.md)：提取模板、内容关系图与证据标记。
 - [content-architecture-example.md](references/content-architecture-example.md)：需要核对关系边和目标映射写法时阅读的虚构示例。
 - [build-guide.md](references/build-guide.md)：实现、导出和逻辑自检。
+- [shape-reconstruction.md](references/shape-reconstruction.md)：参考中存在异形组件时，识别含义、拆解几何并选择实现；含分区环与飘带脚本用法。
+- [fidelity-review.md](references/fidelity-review.md)：保真目标、特色特征、素材依赖、局部试样与导出对照。
 - [archetypes.md](references/archetypes.md)：无参考图时的起步原型。
