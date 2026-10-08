@@ -1,20 +1,20 @@
-# 内容架构示例（虚构海报）
+# Content architecture example (fictional poster)
 
-本页只演示记录方法，不提供可复制的研究事实、数值或版式参数。假设参考海报上方是通栏标题，左栏是研究问题与方法，中栏是两张并排结果图，右栏是结论与限制。
+This example shows how to record relationships. It contains no reusable research claims, measurements, or layout values. Imagine a reference poster with a full-width title at the top, a problem and method in the left column, two result figures in the middle, and a conclusion with a limitation on the right.
 
-## 参考海报：先看见什么，论证依赖什么
+## Reference poster: visual entry versus argumentative dependency
 
-| ID | 可见模块 | 角色 | 位置/权重 |
+| ID | Visible module | Role | Position / weight |
 |---|---|---|---|
-| M0 | 通栏标题 | 主题入口 | 顶部；视觉最高 |
-| M1 | 研究问题 | 提出待回答的问题 | 左栏上方；中 |
-| M2 | 方法流程图 | 回应问题 | 左栏下方；中 |
-| M3 | 结果图 A | 第一组证据 | 中栏；高 |
-| M4 | 结果图 B | 第二组证据 | 与 M3 同组；高 |
-| M5 | 结论 | 汇总结果 | 右栏上方；高 |
-| M6 | 适用条件 | 限定结论 | 紧邻 M5；低但必须可读 |
+| M0 | Full-width title | Topic and entry point | Top; strongest visual weight |
+| M1 | Research problem | States the question to answer | Upper left; medium |
+| M2 | Method diagram | Addresses the question | Lower left; medium |
+| M3 | Result figure A | First piece of evidence | Middle; high |
+| M4 | Result figure B | Second piece of evidence | Grouped with M3; high |
+| M5 | Conclusion | Synthesizes the results | Upper right; high |
+| M6 | Scope condition | Qualifies the conclusion | Next to M5; visually quieter but legible |
 
-逻辑边：
+Typed edges:
 
 ```text
 M1 --addresses--> M2
@@ -23,33 +23,32 @@ M2 --produces--> M4
 M3 --supports--> M5
 M4 --supports--> M5
 M6 --qualifies--> M5
-M3 <--contrasts--> M4  （仅当图中文字/图例证明确为对照）
+M3 <--contrasts--> M4  (only if labels or text establish a comparison)
 ```
 
-阅读路径可能是 `M0 → M5 → M1 → M2 → (M3, M4) → M5 → M6`，因为结论框很醒目；论证路径则是 `M1 → M2 → (M3, M4) → M5`。**视觉先看到结论，不代表结果在方法之前产生。** 若图中文字不清，M3 与 M4 的关系只能写“并排、可能对比 [推断]”，不能写成已证实的对照实验。
+Because the conclusion box is prominent, a plausible **reading path** is `M0 → M5 → M1 → M2 → (M3, M4) → M5 → M6`. The **argument path** is `M1 → M2 → (M3, M4) → M5`. **Seeing the conclusion first does not mean the results precede the method scientifically.** If the figure labels are unreadable, record M3 and M4 as “side by side; possible contrast [Inferred],” not as a confirmed controlled comparison.
 
-## 目标论文：映射功能，不借用参考事实
+## Target study: map functions, not reference facts
 
-假设用户提供的目标材料只有一张主图和一个方法消融表。先建立目标内容节点并记真实来源：
+Suppose the user supplies one main figure and a method-ablation table. Create target nodes and cite their actual sources first:
 
-| 目标 ID | 角色 | 来源 |
+| Target ID | Role | Source |
 |---|---|---|
-| T1 | 研究问题 | 用户论文引言 |
-| T2 | 方法结构 | 用户论文方法节 |
-| T3 | 主结果图 | 用户提供的 Fig. 2 和原始数据 |
-| T4 | 消融表 | 用户提供的 Table 3 |
-| T5 | 结论 | 用户论文结论节，需由 T3/T4 支持 |
-| T6 | 适用条件 | 用户论文讨论节 |
+| T1 | Research problem | User's introduction |
+| T2 | Method structure | User's methods section |
+| T3 | Main result figure | User-provided Fig. 2 and underlying data |
+| T4 | Ablation table | User-provided Table 3 |
+| T5 | Conclusion | User's conclusion, to be checked against T3 and T4 |
+| T6 | Scope condition | User's discussion section |
 
-可把 T3 与 T4 放进参考图的“成组证据区”，维持两块等宽的视觉语法，但不要标记为 `contrasts`，因为它们回答的可能是不同问题。目标关系应分别写 `T3 --supports--> T5` 和 `T4 --supports--> T5`。若 T4 的指标与 T3 不兼容，不共用坐标轴。T6 保持在 T5 旁边。
+T3 and T4 can occupy the reference poster's grouped evidence area, preserving the two-block visual pattern. Do **not** label them `contrasts` unless they answer a genuinely comparable question. Record `T3 --supports--> T5` and `T4 --supports--> T5` separately. If T4's measures are incompatible with T3's, do not share an axis. Keep T6 near T5.
 
-映射记录可写：
+A mapping log could read:
 
-| 参考规则 | 目标实现 | 偏离原因 |
+| Reference pattern | Target implementation | Reason for deviation |
 |---|---|---|
-| M3/M4 并排证据区 | T3 主图 + T4 消融表同组 | 目标材料没有两组可比曲线 |
-| M6 紧贴 M5 | T6 紧贴 T5 | 保留限定关系 |
-| 标题占通栏 | 目标标题占通栏 | 保留视觉入口 |
+| M3/M4 side-by-side evidence | T3 main figure and T4 ablation table in one group | The target has no two comparable curves |
+| M6 beside M5 | T6 beside T5 | Preserves the qualification relationship |
+| Full-width title | Target title spans the width | Preserves the visual entry point |
 
-这个例子中的所有科研内容都只是占位说明；制作真实海报时应以用户材料替换，并逐项核对来源。
-
+All research details above are illustrative placeholders. Replace them with the user's material and verify each source when building a real poster.

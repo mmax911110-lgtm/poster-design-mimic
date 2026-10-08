@@ -1,36 +1,36 @@
-# POSTER-DESIGN.md：提取规格与内容架构
+# POSTER-DESIGN.md: extraction specification and content architecture
 
-这份参考文件用于从海报图片或 PDF 生成一个可复用的 `POSTER-DESIGN.md`。记录**看得到的事实、推断依据、未知项**。文中的表格是字段示意；只保留参考海报确实出现的元素，别把示例数值当成默认值。
+Use this reference to turn a poster image or PDF into a reusable `POSTER-DESIGN.md`. Record **observed facts, the basis for interpretations, and unknowns**. Tables below show fields, not defaults: include only elements present in the actual reference and do not copy illustrative values as measurements.
 
-## 一、交付文件结构
+## 1. Deliverable structure
 
 ```text
-1. 来源与取证范围
-2. 视觉 token 与视觉关系
-3. 参考海报内容架构：模块清单、逻辑边、阅读路径
-4. 可迁移的编排规则与不可迁移的具体事实
-5. 目标内容图与模块映射（仅在有新材料时）
-6. 偏离记录、未知项与核查清单
+1. Source and scope of observation
+2. Visual tokens and relationships between them
+3. Reference poster content architecture: module inventory, typed edges, reading path
+4. Reusable layout rules versus study-specific facts
+5. Target content graph and module mapping (only when new material is provided)
+6. Deviations, unknowns, and verification checklist
 ```
 
-**第 3 节必须先分析参考海报本身。** 第 5 节才处理用户的新论文。两者不要混写：参考图的“结果”只是一个语义槽位，不能成为新论文的结果。
+**Analyze the reference poster itself in section 3 before handling the user's new study in section 5.** Keep those layers separate. A “result” in the reference is a role in the layout, not a result that can be reused in the new study.
 
-## 二、来源与证据等级
+## 2. Source and evidence levels
 
-在文件开头写明：参考图文件/链接、页数、分辨率或矢量属性、目标尺寸（如已知）、提取日期。每个关键观察记录以下等级之一：
+At the start of the file, identify the reference file or URL, page count, resolution or vector properties, target size if known, and extraction date. Mark each consequential observation with one of these labels:
 
-| 标记 | 含义 | 例子 |
+| Label | Meaning | Example |
 |---|---|---|
-| `[实测]` | 源文件可读取的属性，或用户明确提供的数值 | PDF 文字字号、用户给的纸张尺寸 |
-| `[估计]` | 从位图像素、可见比例或局部样本推算 | 页边距约为画宽的 4% |
-| `[推断]` | 由可见内容解释出的语义或阅读意图 | 箭头可能表示处理流程 |
-| `[未知]` | 无法可靠辨认 | 模糊图的坐标轴、缺失的结论文字 |
+| `[Measured]` | A property read directly from a source file, or a value explicitly provided by the user | Font size extracted from a PDF; user-specified paper size |
+| `[Estimated]` | A value approximated from raster pixels, visible proportions, or partial samples | Outer margin is about 4% of the sheet width |
+| `[Inferred]` | An interpretation of visible content or intended reading behavior | An arrow appears to indicate process order |
+| `[Unknown]` | Not reliably legible or determinable | Axis labels in a blurred figure; missing conclusion text |
 
-用户确认“这个视觉估计可以采用”之后，记录为“已确认采用的估计”，不要改标为实测。模糊图上的数字、科学结论与因果关系不能靠猜补全。
+If the user accepts a visual estimate, record “accepted estimate”; do not relabel it `[Measured]`. Never reconstruct scientific numbers, claims, or causal relationships from illegible marks.
 
-## 三、视觉 token 与视觉关系
+## 3. Visual tokens and their relationships
 
-建议以 YAML frontmatter 存视觉 token，后接文字规则。数值应带单位或归一化比例；比例比由低清图估出的绝对毫米值更可靠。下面只是字段示例：
+YAML frontmatter is a convenient place for visual tokens, followed by prose rules. Give values units or normalized proportions. For a low-resolution reference, proportional estimates are usually more defensible than precise millimeter claims. This block illustrates fields only:
 
 ```yaml
 ---
@@ -62,141 +62,151 @@ charts:
 ---
 ```
 
-**取证方法**：
+**How to collect evidence:**
 
-- 先记录整页和每个可见模块的边界框 `(x, y, w, h)`，以页宽、高归一化为 0–1。保留实际测量的图像像素坐标，避免日后无法复核。
-- PDF/矢量源可读出部分字体、颜色与路径；只能把实际读到的属性标为实测。截图经缩放、压缩、色彩管理后，不能声称颜色或字号“精确”。
-- 位图可用主色聚类辅助识别语义色；需排除照片和图表自身颜色，否则会误判海报主题色。
-- 提取字阶、栏宽、区块间距、留白比例、边框/圆角、图表线条、图注位置及字体族。未出现的组件不要凭模板补进去。
-- 不因某一张样本只用一种强调色，就删除样本确实使用的第二种强调色；记录每种颜色承担的角色与出现范围。
+- Record the sheet and each visible module's bounding box `(x, y, w, h)`, normalized to 0–1 relative to sheet width and height. Retain the pixel coordinates used for measurement so later readers can audit the estimate.
+- A PDF or vector source may expose font, color, and path properties. Mark only properties actually read from the file as `[Measured]`. Scaling, compression, and color management make exact claims from screenshots unreliable.
+- Dominant-color clustering can help identify semantic colors in a raster image. Exclude photographs and chart series; otherwise their colors may be mistaken for the poster palette.
+- Extract the type scale, column widths, section gaps, whitespace ratio, borders and corners, chart marks, caption placement, and font families. Do not add components merely because they appear in this template.
+- If the reference uses more than one accent, record each accent's role and placement. Do not erase a real second accent to satisfy a generic “one accent” rule.
 
-视觉 token 之外，明确写**关系**：标题/正文的字号比、栏宽比、彩色面积占比、主色在哪些组件联动、哪些装饰明确不存在、规则在哪些区域例外。这些关系比单独的色值更能限制风格漂移。
+Beyond isolated tokens, describe **relationships**: title-to-body size ratio, column-width ratio, colored-area share, where a primary color repeats, which decorations are absent, and where rules have exceptions. These relationships constrain style drift better than individual hex values.
 
-示例写法：
+Example:
 
 ```markdown
-## 视觉关系
-- 标题/正文约 3.7:1 [估计；依据：像素字高样本]。
-- 深蓝只用于标题带和节标题 [实测；依据：第 1 页可见区域]。
-- 结论区跨两栏，图注固定在图下 [估计；依据：模块 M5、M6 边界框]。
-- 没有卡片阴影 [实测；限于当前参考页]。
+## Visual relationships
+- Title/body size is approximately 3.7:1 [Estimated; basis: sampled pixel letter heights].
+- Dark blue appears only in the title band and section headings [Measured; basis: inspected page 1].
+- The conclusion spans two columns; captions sit below figures [Estimated; basis: M5/M6 bounds].
+- No card shadows appear on the inspected reference page [Measured; scope: that page].
 ```
 
-换尺寸时优先保持**相对层级、语义色角色、留白节奏和证据与结论的空间关系**；绝对字号、栏数、间距可随尺寸和内容调整，记录重要偏离。可读性应以目标纸张、实际观看距离与打印样张验证，不使用一张通用的字号下限表代替检查。
+When resizing, prioritize relative hierarchy, semantic color roles, whitespace rhythm, and the spatial relationship between evidence and conclusion. Absolute font sizes, spacing, and column counts may change with sheet size and content; record material deviations. Assess legibility against the final sheet, likely viewing distance, and a print proof rather than a universal minimum-size table.
 
-## 四、参考海报内容架构
+## 4. Reference poster content architecture
 
-### 4.1 模块清单
+### 4.1 Module inventory
 
-把标题、摘要、背景、问题、方法、流程图、每张主要结果图、结论、限定条件等可辨认区块分别编号。**不要只抄栏目标题**；要说明模块回答的问题及承担的论证角色。
+Assign IDs to every distinguishable block: title, abstract, background, problem, method, workflow diagram, each major result figure, conclusion, qualifications, and so on. **Do more than transcribe section headings**: state what question each block answers and what it contributes to the argument.
 
-| ID | 原文标题或可辨认线索 | 语义角色 / 回答的问题 | 可见内容摘要 | 归一化位置 | 视觉权重 | 证据 |
+| ID | Original heading or visible cue | Role / question answered | Legible content summary | Normalized bounds | Visual weight | Evidence |
 |---|---|---|---|---|---|---|
-| M1 | 按参考图填写 | 背景：为什么研究？ | 仅写可辨认内容 | `x,y,w,h` | 高/中/低 + 依据 | 页码/局部截图、标记 |
+| M1 | Fill from the reference | Background: why this study? | Only what can be read | `x,y,w,h` | High / medium / low, with basis | Page/crop and evidence label |
 
-建议的语义角色：研究背景、问题/假设、目标、方法/系统结构、实验设置、结果、证据图表、比较、机制解释、结论、限制、展望、署名与来源。一个模块可有多个角色，但“图表是证据”与“图表声称的结论”要分开识别。
+Possible roles include context, problem/hypothesis, objective, method/system, experimental setup, result, evidence figure, comparison, mechanism, conclusion, limitation, future work, authorship, and source. A module may have several roles, but distinguish a **figure as evidence** from the **claim made about the figure**.
 
-**区分两种顺序**：
+**Keep two orders separate:**
 
-- `reading_order`：读者依据位置、编号、箭头、色带或视觉焦点可能先看什么。
-- `argument_order`：论证上什么引出什么、什么支持什么。两者不一定相同；大数字可能先被看到，却在论证上依赖左侧方法图。
+- `reading_order`: what a reader is likely to see first based on placement, numbering, arrows, color bands, or visual weight.
+- `argument_order`: what motivates, produces, or supports what. A large result number may be seen first even though it depends on a method shown to its left.
 
-### 4.2 模块关系边
+### 4.2 Typed relationship edges
 
-用 `from → to` 写方向，明确边类型和依据。方向规则如下：引出、回应、产生、先后按叙事推进方向写；支持和限定从证据/条件指向被支持/被限定的主张；对比、并列是对称关系，可写 `A ↔ B`。至少记录所有会影响摆放的关系；不要为了凑一条链而连起无关模块。
+Write `from → to` with a relationship type and evidence. For motivates, addresses, produces, and precedes, the arrow follows the narrative sequence. For supports and qualifies, it points from evidence or condition to the claim it supports or limits. Contrast and parallel are symmetric and may be written `A ↔ B`. Capture every relationship that affects placement; do not force unrelated blocks into one chain.
 
-| 关系 | 含义 | 常见布局含义 |
+| Type | Direction and meaning | Typical layout consequence |
 |---|---|---|
-| `motivates` 引出 | 背景 → 问题/目标 | 可相邻，问题更醒目 |
-| `addresses` 回应 | 问题 → 回应它的方法 | 维持从问题到方法的阅读方向 |
-| `produces` 产生 | 方法/实验 → 数据 | 图表靠近方法或实验设置 |
-| `supports` 支持 | 数据/图表 → 主张 | 证据与主张相邻或有清楚指向 |
-| `qualifies` 限定 | 条件/误差 → 被限定的主张 | 限定与被限定者就近 |
-| `contrasts` 对比 | 比较项 A ↔ B | 并排或同组；量纲可比时才共轴 |
-| `parallels` 并列 | 同级项 A ↔ B | 同级视觉处理 |
-| `precedes` 先后 | 步骤 A → B | 编号、箭头或明确排列 |
-| `summarizes` 汇总 | 多个结果 → 结论 | 可跨栏或形成收束焦点 |
+| `motivates` | Context → problem or objective | Keep them near; let the problem stand out |
+| `addresses` | Problem → method responding to it | Preserve problem-to-method reading direction |
+| `produces` | Method or experiment → data | Place a result figure near the method or setup |
+| `supports` | Data or figure → claim | Keep evidence adjacent to, or clearly linked with, the claim |
+| `qualifies` | Condition or uncertainty → limited claim | Keep the qualification close to its target |
+| `contrasts` | Comparable items A ↔ B | Group or align them; share axes only when valid |
+| `parallels` | Same-level items A ↔ B | Give them equivalent visual treatment |
+| `precedes` | Step A → step B | Use numbering, arrows, or unambiguous order |
+| `summarizes` | Several results → conclusion | Form a visible point of synthesis |
 
-在交付的 `POSTER-DESIGN.md` 中使用如下格式：
+Use this structure in the delivered `POSTER-DESIGN.md`:
 
 ```markdown
-## 参考内容架构
-### 模块
-| ID | 标题/线索 | 角色 | 回答的问题 | 位置 | 权重 | 依据与置信度 |
+## Reference content architecture
+### Modules
+| ID | Heading/cue | Role | Question answered | Position | Weight | Evidence and confidence |
 |---|---|---|---|---|---|---|
 | ... |
 
-### 逻辑关系
-| From → To | 类型 | 原文/图形依据 | 布局约束 | 置信度 |
+### Logical relationships
+| From → To | Type | Text/graphic evidence | Layout constraint | Confidence |
 |---|---|---|---|---|
-| M2 → M3 | addresses | 参考图中的编号/文本 | 问题先于方法；可跨栏但路径连续 | [推断] |
+| M2 → M3 | addresses | Numbering/text in the reference | Problem before method; a span may cross columns if the path stays clear | [Inferred] |
 
-### 阅读路径
-入口：...
-主路径：M1 → M2 → M3 → M5
-支路：M3 → M4（方法细节）；M5 ↔ M6（对比）
-出口：...
-路径依据：编号/箭头/对齐/视觉重量；无法确认的转折：...
+### Reading path
+Entry: ...
+Main path: M1 → M2 → M3 → M5
+Branch: M3 → M4 (method details); M5 ↔ M6 (comparison)
+Exit: ...
+Basis: numbering/arrows/alignment/visual weight; uncertain transitions: ...
 ```
 
-箭头 `→` 的语义必须由关系表定义。仅仅靠得近，最多记为“视觉相邻”；不要升格成 `supports` 或因果关系。参考图若文字不可读，可记录“上方宽模块 → 下方三块并列”的**视觉阅读路径**，逻辑关系写 `[未知]`。特别检查跨栏大图、成组小图、方法流程、结论框与脚注：这些位置最容易隐藏关系。需要看完整示例时读 [content-architecture-example.md](content-architecture-example.md)。
+Every arrow's meaning should be defined in the edge table. Proximity alone establishes at most **visual adjacency**, not `supports` or causation. If reference text is unreadable, record the visible scan pattern (for example, “wide upper block → three parallel lower blocks”) and label the logical relationship `[Unknown]`. Inspect spanning figures, grouped panels, workflows, conclusion boxes, and footnotes carefully; they often encode hidden relationships. For a worked example, read [content-architecture-example.md](content-architecture-example.md).
 
-### 4.3 内容层级与视觉层级
+### 4.3 Information versus visual hierarchy
 
-分别排序：
+Rank these separately:
 
-1. 参考海报认为最重要的**主张、结果或证据**是什么？依据是文字、位置、字号、面积还是颜色？
-2. 视觉上最大的元素是什么？它可能只是标题或品牌标识，不应自动视为最重要的科学结论。
-3. 每张图的解释文字和适用条件在哪里？如果它们与图分离，记录这个风格特征及误读风险。
+1. What claim, result, or evidence does the reference seem to prioritize? Is that judgment based on wording, position, size, area, or color?
+2. What is visually largest? It may be a title or a brand mark, not the most important scientific conclusion.
+3. Where is each figure explained, and where are its scope conditions? If separated, record the pattern and the risk of misreading.
 
-写成一张“信息 → 视觉载体”表，不以固定的“标题一级、结果二级、背景四级”取代真实观察。
+Write an “information → visual carrier” table from actual observation. Do not impose a fixed order such as “title first, results second, background fourth” on every reference.
 
-## 五、迁移到新研究材料
+### 4.4 Reusable layout grammar
 
-先建立目标内容图，**每条科学陈述附来源**：
+Before introducing target material, summarize what the reference teaches about *arrangement* and what belongs only to its study:
 
-| 目标 ID | 主张/信息 | 角色 | 来源页/段/图/数据 | 支持它的目标 ID | 限定或条件 | 优先级 |
-|---|---|---|---|---|---|---|
-| T1 | 按用户材料填写 | 结论 | 论文 §4 / Fig. 2 | T2 | T3 | 高 |
-
-再写目标与参考模块的映射：
-
-| 参考模块/关系 | 可复用功能 | 目标内容 ID | 调整理由 |
+| Observed pattern and evidence | Reusable layout function | Reference-specific content not transferred | Conditions for reuse |
 |---|---|---|---|
-| M3 → M5 (`produces`) | 方法旁边展示其输出证据 | T4 → T2 | 目标图较宽，跨两栏 |
+| Wide figure beside a narrow conclusion block; M4/M5 bounds | Keep evidence and synthesis easy to compare | Original measurements, figure labels, and conclusion text | Target has evidence that actually supports the nearby claim |
 
-**保留的是语法，不是参考论文的事实**：例如“问题区 → 宽方法图 → 并排结果 → 跨栏结论”可迁移；参考海报里的数值、实验名称、对照组和引用不能迁移。目标材料没有并列实验，就不要为了占满两栏捏造第二组；可以把该槽位变成方法细节或留白，但要保持阅读路径清晰并写明调整。
+This ledger becomes section 4 of the delivered `POSTER-DESIGN.md`. A layout relation can be reusable even when the number of modules changes; a scientific claim is never reusable merely because its box is prominent.
 
-映射时按关系决定空间，而非只看矩形数量：
+## 5. Transfer to new research material
 
-- `supports`：图与主张相邻；图注指出图真正证明的内容。
-- `qualifies`：限定紧贴对应数字、图或结论，且字号足以读清。
-- `contrasts`：同组、同标签体系；仅在指标和单位兼容时共用坐标轴。
-- `precedes`：方法步骤的视觉顺序与实际步骤相同。
-- `parallels`：保持同级，不用无依据的大小差制造主次。
-- `summarizes`：结论能回指前面证据，而非只剩口号。
+Build the target content graph first and **attach a source to every scientific assertion**:
 
-目标材料中的作者、机构、二维码、基金信息按用户和会议规则处理；不能从参考海报沿用。
+| Target ID | Claim/information | Role | Source page/section/figure/data | Supporting target IDs | Qualification | Priority |
+|---|---|---|---|---|---|---|
+| T1 | Fill from the user's material | Conclusion | Paper §4 / Fig. 2 | T2 | T3 | High |
 
-## 六、核查与未知项
+Then map the target graph to reusable roles from the reference:
 
-`POSTER-DESIGN.md` 末尾记录：
+| Reference module/relationship | Reusable function | Target IDs | Reason for adjustment |
+|---|---|---|---|
+| M3 → M5 (`supports`) | Put evidence near the conclusion it supports | T2 → T5 | The target figure is wide and spans two columns |
+
+**Transfer the grammar, not the reference study's facts.** A pattern such as “problem block → wide method diagram → grouped results → spanning conclusion” may transfer. Its original values, experimental names, control groups, and citations may not. If the target has no parallel experiment, do not invent one to fill a second column. Use that space for valid method detail or whitespace, keep the reading path clear, and document the change.
+
+Let the graph determine spatial decisions rather than simply matching rectangle counts:
+
+- `supports`: Keep figure and claim close; write a caption that explains what the figure actually establishes.
+- `qualifies`: Place conditions next to the relevant number, figure, or conclusion in legible type.
+- `contrasts`: Use one visual group and compatible labels; share an axis only when measures and units permit it.
+- `precedes`: Match the visual order of method steps to the real sequence.
+- `parallels`: Preserve equal standing rather than implying an unsupported ranking through size.
+- `summarizes`: Let the conclusion point back to evidence instead of becoming a slogan.
+
+Handle authors, affiliations, QR codes, and funding details according to the user's material and venue rules. Never carry them over from the reference poster.
+
+## 6. Verification and unknowns
+
+End `POSTER-DESIGN.md` with:
 
 ```markdown
-## 未知与待核对
-| 项目 | 目前判断 | 依据/缺口 | 对生成的影响 | 处理方式 |
+## Unknowns and items to verify
+| Item | Current judgment | Evidence/gap | Effect on generation | Resolution |
 |---|---|---|---|---|
 
-## 偏离记录
-| 参考规则 | 目标做法 | 原因 | 是否影响论证路径 |
+## Deviation log
+| Reference rule | Target implementation | Reason | Effect on argument path |
 |---|---|---|---|
 ```
 
-完成提取后自问：
+Before finishing, ask:
 
-- 是否既有模块清单，也有关系边和阅读路径？
-- 关系边是否有文字、编号、箭头或图形分组的依据？有无把相邻误写为因果？
-- 参考海报的内容组织与目标研究的事实是否分开？
-- 目标每条主张是否能追溯到用户材料，且能找到支撑它的图/数据？
-- 限定条件、对比对象和步骤顺序是否在布局中得到正确表达？
-- 未读清的内容是否仍标未知？重要偏离是否有记录？
+- Are the module inventory, typed edges, and reading path all present?
+- Does every edge cite text, numbering, an arrow, or graphic grouping? Was mere adjacency mistaken for causation?
+- Are the reference poster's content structure and the target study's facts kept separate?
+- Can every target claim be traced to the user's material and, where needed, to supporting data or a figure?
+- Are qualifications, comparisons, and step order expressed correctly in the layout?
+- Are illegible items still marked unknown, and are material deviations recorded?
